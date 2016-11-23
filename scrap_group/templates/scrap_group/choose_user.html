@@ -1,0 +1,8 @@
+{% block content %}
+    <form action="{% url 'user_id' %}" method="post">
+        {% csrf_token %}
+        <label for="user_id">User Id:</label>
+        <input id="user_id" name="user_id" type="text">
+        <button type="submit">Get Details</button>
+    </form>
+{% endblock %}
