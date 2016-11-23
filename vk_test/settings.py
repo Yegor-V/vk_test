@@ -6,7 +6,9 @@ SECRET_KEY = 'bl91(b4&b^w7n@plw7*2bzq)dv7wqwlzv=r0nsw1lt(v9qc0!x'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['yvdev.pythonanywhere.com',
+                 'localhost',
+                 '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
