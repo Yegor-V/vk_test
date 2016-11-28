@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import TemplateView
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
 import vk
 
 from scrap_group.models import UserIds
@@ -66,3 +67,9 @@ class UserDetails(TemplateView):
         wall_posts = api.wall.get(domain='betsbyboss', count=1)
 
         return context
+
+
+class SendMessages(APIView):
+
+    def get(self, request, format=None):
+        return Response('Hi response')
