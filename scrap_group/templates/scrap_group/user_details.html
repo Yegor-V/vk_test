@@ -3,5 +3,14 @@
     <p>ID: {{ user_details.0.uid }} </p>
     <p>Name: {{ user_details.0.first_name }} </p>
     <p>Last Name: {{ user_details.0.last_name }} </p>
-
+    <p>
+        Friends:<br>
+        {% for friend in friends %}
+            {{ friend.first_name }} {{ friend.last_name }} {{ friend.sex }}<br>
+        {% endfor %}
+    </p>
+    <p>
+        Men Count: {{ men_count }}<br>
+        Women Count: {{ women_count }}
+    </p>
 {% endblock %}
