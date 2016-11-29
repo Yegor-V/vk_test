@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import vk
+from scrap_group.models import RequestHistory
 
 from scrap_group.models import UserIds
 
@@ -46,7 +47,7 @@ class UserDetails(TemplateView):
 
         user = api.users.get(user_ids=uid)
 
-        friends_ids = api.friends.get(user_id=397905612)
+        friends_ids = api.friends.get(user_id=uid)
         friends = api.users.get(user_ids=friends_ids, fields='sex')
         men_count = 0
         women_count = 0
@@ -69,7 +70,28 @@ class UserDetails(TemplateView):
         return context
 
 
-class SendMessages(APIView):
+class SendMessagesOne(APIView):
 
     def get(self, request, format=None):
-        return Response('Hi response')
+        application_id = 5753066
+        redirect_url = 'http://yvdev.pythonanywhere.com/code'
+        url = "https://oauth.vk.com/authorize?client_id=" + str(application_id) + \
+              "&display=popup&redirect_uri=" + redirect_url + "&scope=friends&response_type=code&v=5.60"
+        RequestHistory.objects.create(action="send_messages")
+        return render(request, 'scrap_group/action.html', context={"url": url})
+
+
+class SendMessagesTwo(APIView):
+    def get(self, request, format=None):
+        access_token = ''
+        return Response('Your access token: ', access_token)
+
+
+class SendMessagesThree(APIView):
+    def get(self, request, format=None):
+        access_token = ''
+        return Response('Your access token: ', access_token)
+
+
+class Code(TemplateView):
+    template_name = 'scrap_group/code.html'
