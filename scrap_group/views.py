@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -82,10 +83,9 @@ class SendMessagesOne(APIView):
         return render(request, 'scrap_group/action.html', context={"url": url})
 
 
-class SendMessagesTwo(APIView):
+class SendMessagesTwo(View):
     def get(self, request, format=None):
-        access_token = ''
-        return Response('Your access token: ', access_token)
+        return HttpResponse('Your code: ')
 
 
 class SendMessagesThree(APIView):
@@ -96,5 +96,6 @@ class SendMessagesThree(APIView):
 
 class Code(View):
     def get (self,  request, format=None):
-        print(request.GET)
-        return redirect(reverse('send-messages-two'))
+        code = request.GET['code']
+        return render(request, 'scrap_group/code.html', {"code": code})
+        # return redirect(reverse('send-messages-two'))
