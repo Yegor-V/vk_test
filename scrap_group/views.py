@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.views import View
 from django.views.generic import TemplateView
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -93,5 +94,7 @@ class SendMessagesThree(APIView):
         return Response('Your access token: ', access_token)
 
 
-class Code(TemplateView):
-    template_name = 'scrap_group/code.html'
+class Code(View):
+    def get (self,  request, format=None):
+        print(request.GET)
+        return redirect(reverse('send-messages-two'))
