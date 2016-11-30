@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^code$', Code.as_view(), name='code'),
+    url(r'^access_token/?$', AccessToken.as_view(), name='access-token'),
     url(r'^step1$', SendMessagesOne.as_view(), name='send-messages-one'),
     url(r'^step2$', SendMessagesTwo.as_view(), name='send-messages-two'),
     url(r'^step3$', SendMessagesThree.as_view(), name='send-messages-three'),

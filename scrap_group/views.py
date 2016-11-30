@@ -103,3 +103,13 @@ class Code(View):
         url = "https://oauth.vk.com/access_token?client_id={}&client_secret={}&redirect_uri={}&code={}".format(app_id, cli_secret, redirect_uri, code)
         return render(request, 'scrap_group/code.html', {"code": code, "url": url})
         # return redirect(reverse('send-messages-two'))
+
+
+class AccessToken(View):
+    def get(self, request, format=None):
+        access_token = request.GET['access_token']
+        expires_in = request.GET['expires_in']
+        user_id = request.GET['user_id']
+        return render(request, 'scrap_group/access_token.html', {"access_token": access_token,
+                                                                 "expires_in": expires_in,
+                                                                 "user_id": user_id})
