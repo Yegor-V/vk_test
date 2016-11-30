@@ -75,7 +75,7 @@ class UserDetails(TemplateView):
 class SendMessagesOne(APIView):
 
     def get(self, request, format=None):
-        application_id = 5743393
+        application_id = 5754177
         redirect_url = 'http://yvdev.pythonanywhere.com/code'
         url = "https://oauth.vk.com/authorize?client_id=" + str(application_id) + \
               "&display=popup&redirect_uri=" + redirect_url + "&scope=friends&response_type=code&v=5.60"
@@ -96,8 +96,8 @@ class SendMessagesThree(APIView):
 
 class Code(View):
     def get (self,  request, format=None):
-        app_id = 5743393
-        cli_secret = "jtCssXvMz55E7hXpsxIT"
+        app_id = 5754177
+        cli_secret = "OFxW1JxxhNeGm4iXFjNS"
         redirect_uri = "http://yvdev.pythonanywhere.com/code"
         code = request.GET.get('code', None)
         access_code = request.GET.get('access_code', None)
