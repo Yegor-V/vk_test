@@ -96,6 +96,10 @@ class SendMessagesThree(APIView):
 
 class Code(View):
     def get (self,  request, format=None):
+        app_id = 5743393
+        cli_secret = "jtCssXvMz55E7hXpsxIT"
+        redirect_uri = "http://yvdev.pythonanywhere.com/access_token"
         code = request.GET['code']
-        return render(request, 'scrap_group/code.html', {"code": code})
+        url = "https://oauth.vk.com/access_token?client_id={}&client_secret={}&redirect_uri={}&code={}".format(app_id, cli_secret, redirect_uri, code)
+        return render(request, 'scrap_group/code.html', {"code": code, "url": url})
         # return redirect(reverse('send-messages-two'))
